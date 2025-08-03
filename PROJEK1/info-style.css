@@ -1,0 +1,109 @@
+#info-page {
+  min-height: 100vh;
+  background-image: url('hoshino-ai.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.info-content {
+  background: linear-gradient(120deg, rgba(255,255,255,0.22) 0%, rgba(30,60,114,0.13) 100%);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(30, 59, 114, 0.438), 0 2px 12px #2a529869;
+  padding: 40px 36px 36px 36px;
+  max-width: 640px;
+  margin: 56px auto 0 auto;
+  color: #fff;
+  animation: glassFadeIn 1.2s;
+  border: 2.5px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(18px) saturate(180%);
+  position: relative;
+  transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  overflow-y: auto; /* Allow vertical scrolling */
+  max-height: 80vh; /* Limit the height to 80% of the viewport height */
+  width: 90%; /* Increase the width */
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.info-content::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 80%, #fff3 0%, transparent 60%),
+              radial-gradient(circle at 70% 20%, #fff2 0%, transparent 60%);
+  opacity: 0.7;
+  mix-blend-mode: lighten;
+  animation: liquidGlass 3s infinite linear alternate;
+  z-index: 0;
+}
+
+.info-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.info-content h2 {
+  text-shadow: 0 2px 12px #2a5298;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+}
+
+.info-content h3 {
+  text-shadow: 0 2px 12px #2a5298;
+  font-size: 1.5rem;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.info-content p {
+  text-shadow: 0 2px 12px #2a5298;
+  font-size: 1.15rem;
+  margin-bottom: 22px;
+  color: #eaf0ff;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.info-content ul {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 420px;
+  padding-left: 24px;
+  color: #fff;
+  font-size: 1.08rem;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: rgba(42,82,152,0.08);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #2a529822;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.info-content ul li {
+  margin-bottom: 8px;
+  padding-left: 2px;
+  line-height: 1.6;
+  position: relative;
+  text-shadow: 0 2px 8px rgba(30, 60, 114, 0.5);
+}
+
+.info-content ul li::before {
+  content: "•";
+  color: #ffda47;
+  font-size: 1.2em;
+  margin-right: 10px;
+  position: relative;
+  top: 1px;
+  text-shadow: 0 2px 8px rgba(30, 60, 114, 0.5);
+}

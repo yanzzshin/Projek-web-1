@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Info judul lur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="info-style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Login Page -->
+    <div id="login-page" class="fade-in">
+      <div class="login-box">
+        <h2 class="login-title">Login dulu</h2>
+        <input type="text" id="username" placeholder="Username" class="input-field" />
+        <input type="password" id="password" placeholder="Password" class="input-field" />
+        <button class="btn-main" onclick="login()">Login</button>
+        <div id="login-error" class="error-msg"></div>
+      </div>
+    </div>
+    <!-- Error Popup -->
+    <div id="error-popup">
+      <div class="popup-title">Error</div>
+      <div class="popup-file" id="error-popup-message"></div>
+      <div class="popup-actions">
+        <button class="popup-btn" onclick="closeErrorPopup()">OK</button>
+      </div>
+    </div>
+    <!-- Home Page -->
+    <div id="home-page" style="display:none;">
+      <div class="header-bar">Home</div>
+      <div class="home-content fade-in">
+        <h2>Yooo selamat datang di Server!</h2>
+        <p>
+          Website ini bisa untuk melihat galeri foto & video, sama mengunduh file yang tersedia di server.<br>
+          Silakan login untuk mengakses gallery dan download file.
+        </p>
+        <ul>
+          <li>Masi tahap awal perkembangan</li>
+          <li>Preview foto & video</li>
+          <li>Download file langsung dari server</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Gallery Page -->
+    <div id="gallery-page" style="display:none;">
+      <div class="header-bar">Gallery</div>
+      <div class="search-bar">
+        <span class="search-icon"></span>
+        <input type="text" id="gallery-search" class="search-input" placeholder="Cari foto/video..." oninput="renderGallery()" />
+      </div>
+      <div class="upload-section">
+        <input type="file" id="gallery-upload" accept="image/*,video/*" multiple style="display: none;" onchange="handleGalleryUpload(event)" />
+        <button class="upload-btn" onclick="document.getElementById('gallery-upload').click()">Upload File</button>
+      </div>
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Media cards will be injected here -->
+      </div>
+    </div>
+    <!-- Download Page -->
+    <div id="download-page" style="display:none;">
+      <div class="header-bar">Download File</div>
+      <div class="search-bar">
+        <span class="search-icon"></span>
+        <input type="text" id="download-search" class="search-input" placeholder="Cari file..." oninput="renderDownloadList()" />
+      </div>
+      <div class="upload-section">
+        <input type="file" id="download-upload" accept="*" multiple style="display: none;" onchange="handleDownloadUpload(event)" />
+        <button class="upload-btn" onclick="document.getElementById('download-upload').click()">Upload File</button>
+      </div>
+      <div class="download-list fade-in" id="download-list">
+        <!-- File list will be injected here -->
+      </div>
+    </div>
+    <!-- Info Page -->
+    <div id="info-page" style="display:none;">
+      <div class="header-bar">Info</div>
+      <div class="info-content fade-in">
+        <h2>Tentang Saya</h2>
+        <p>
+          Halo! Saya adalah pembuat website ini. Website ini dibuat untuk berbagi galeri foto & video, serta menyediakan file yang bisa diunduh dari server.
+        </p>
+        <h3>MASALAH YG HARUS DI KETAHUI</h3>
+        <ul>
+          <li>1. FITUR UPLOD FILE MASI DI PERBAIKI</li>
+          <li>2. - </li>
+          <li>3. - </li>
+          <li>4. - </li>
+        <h3>Kontak</h3>
+        <p>Jika Anda memiliki pertanyaan atau masukan, jangan ragu untuk menghubungi saya.</p>
+        <ul>
+          <li>Email: oranganehh02@gmail.com sutaferyansyah2011@gmail.com</li>
+          <li>GitHub: (-) Unvailable</li>
+          <li>Tiktok: @yanzzshin.official</li>
+          <li>Instagram: @yanzzshin</li>
+          <li>Youtube: (-) Unvailable</li>
+        </ul>
+        <h3>Tentang Website</h3>
+        <p>Website ini masih dalam tahap pengembangan. Saya terus berusaha untuk meningkatkan fungsionalitas dan menambahkan konten baru.</p>
+      </div>
+    </div>
+    <!-- Settings Page -->
+    <div id="settings-page" style="display:none;">
+      <div class="header-bar">Settings</div>
+      <div class="settings-content fade-in">
+        <h2>Pengaturan</h2>
+        <div class="settings-group">
+          <h3>Tampilan</h3>
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider round"></span>
+          </label>
+          <span>Mode Gelap</span>
+        </div>
+        <div class="settings-group">
+          <h3>Notifikasi</h3>
+          <label class="switch">
+            <input type="checkbox" id="notifications-toggle" checked>
+            <span class="slider round"></span>
+          </label>
+          <span>Tampilkan Notifikasi</span>
+        </div>
+        <div class="settings-group">
+          <h3>Bahasa</h3>
+          <select id="language-select">
+            <option value="id">Indonesia</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Preview -->
+    <div id="modal-backdrop" style="display:none;" onclick="closeModal()">
+      <div id="modal-content" onclick="event.stopPropagation();"></div>
+    </div>
+    <!-- Login Confirmation Popup -->
+    <div id="login-popup">
+      <div class="popup-title">Konfirmasi Login</div>
+      <div class="popup-file" id="login-popup-user"></div>
+      <div class="popup-actions">
+        <button class="popup-btn" onclick="confirmLogin()">Login</button>
+        <button class="popup-btn" onclick="cancelLogin()">Ga jadi</button>
+      </div>
+    </div>
+    <!-- Download Confirmation Popup -->
+    <div id="download-popup">
+      <div class="popup-title">Konfirmasi Download</div>
+      <div class="popup-file" id="popup-file"></div>
+      <div class="popup-actions">
+        <button class="popup-btn" onclick="confirmDownload()">Download</button>
+        <button class="popup-btn" onclick="cancelDownload()">Ga jadi</button>
+      </div>
+    </div>
+    <!-- Notification -->
+    <div id="notif"></div>
+    <!-- Navigation Bar (moved to bottom, hidden before login) -->
+    <nav id="navbar" class="navbar-bottom" style="display:none;">
+      <ul class="nav-menu">
+        <li>
+          <button class="nav-btn" onclick="showPage('home')" title="Home">
+            <span class="nav-icon home-icon"></span>
+            Home
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" onclick="showPage('gallery')" title="Gallery">
+            <span class="nav-icon gallery-icon"></span>
+            Gallery
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" onclick="showPage('download')" title="Download File">
+            <span class="nav-icon download-icon"></span>
+            Download
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" onclick="showPage('info')" title="Info">
+            <span class="nav-icon info-icon"></span>
+            Info
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" onclick="showPage('settings')" title="Settings">
+            <span class="nav-icon settings-icon"></span>
+            Settings
+          </button>
+        </li>
+      </ul>
+      <button class="btn-main nav-logout" id="nav-logout" onclick="logout()" title="Logout">
+        <span class="nav-icon logout-icon"></span>
+        Logout
+      </button>
+    </nav>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
