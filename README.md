@@ -37,6 +37,12 @@ Kalo gagal login, berarti web-nya gue lagi benerin 😅
 
 ---
 
+## 📱 Sosial Media
+- TikTok: [@yanzzshin.official](https://www.tiktok.com/@yanzzshin.official)
+- GitHub: [github.com/yanzzshin](https://github.com/yanzzshin)
+
+---
+
 ⚠️ **Catatan penting:**  
 Kalau website nggak berubah atau error aneh muncul, **disarankan untuk clear cache browser dulu**!  
 Soalnya ini web kadang nyangkut di cache lama, apalagi efek blur berat bisa stuck di style lama browser lo.
