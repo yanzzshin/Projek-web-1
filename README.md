@@ -1,4 +1,4 @@
-# 💻 liquid-web – Blur Web UI + Upload File Project
+# 💻 Anime Website - Upload File Project
 
 Halo! Gue **Yanzz**, gue masih SMP tapi udah ngulik dunia web 😎  
 Ini repo berisi semua file dari project website blur aesthetic gue, lengkap dengan efek **glassmorphism**, form upload file, dan custom login page.
