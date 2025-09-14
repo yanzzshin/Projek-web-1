@@ -8,7 +8,7 @@ Ini repo berisi semua file dari project website blur aesthetic gue, lengkap deng
 ## 🌐 Live Preview
 🟢 Cek langsung web-nya (walau kadang down karna windows/server nya lagi gue matiin 😅):  
 ➡️ [yanzzshin.ddns.net](yanzzshin.ddns.net)
-➡️ [ALTERNATIVE LINK](192.168.1.11)
+➡️  ALTERNATIVE LINK: 192.168.1.1
 
 ---
 
